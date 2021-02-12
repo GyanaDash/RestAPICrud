@@ -1,0 +1,5 @@
+﻿When we'll start using the Entity Framework for storing the data,
+we need to add the following packages,
+
+1. Microsoft.EntityFrameworkCore.SqlServer
+2. Microsoft.EntityFrameworkCore.Tools  <-- This is basically used for code migration.
