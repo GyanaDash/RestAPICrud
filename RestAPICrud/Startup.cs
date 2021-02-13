@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RestAPICrud.EmployeeData;
+using RestAPICrud.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,10 @@ namespace RestAPICrud
         {
 
             services.AddControllers();
-            services.AddSingleton<IEmployeeData, MockEmployeeData>();
+            //services.AddSingleton<IEmployeeData, MockEmployeeData>(); This for Mock Implementation
+            services.AddDbContextPool<MyEmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddScoped<IMyEmployeeData, SqlMyEmployeeData>(); //This is for sql server
            
             services.AddSwaggerGen(c =>
             {

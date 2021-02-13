@@ -6,58 +6,58 @@ using System.Threading.Tasks;
 
 namespace RestAPICrud.EmployeeData
 {
-    public class MockEmployeeData : IEmployeeData
+    public class MockMyEmployeeData : IMyEmployeeData
     {
-        private List<Employee> employees = new List<Employee>()
+        private List<MyEmployee> employees = new List<MyEmployee>()
         {
-            new Employee()
+            new MyEmployee()
             {
                 Id = Guid.NewGuid(),
                 Name = "Sakshi"
             },
 
-            new Employee()
+            new MyEmployee()
             {
                 Id = Guid.NewGuid(),
                 Name = "Munu"
             },
 
-            new Employee()
+            new MyEmployee()
             {
                 Id = Guid.NewGuid(),
                 Name = "Kunu"
             },
 
-            new Employee()
+            new MyEmployee()
             {
                 Id = Guid.NewGuid(),
                 Name = "Shivam"
             }
         };
 
-        public Employee AddEmployee(Employee employee)
+        public MyEmployee AddEmployee(MyEmployee employee)
         {
             employee.Id = Guid.NewGuid();
             employees.Add(employee);
             return employee;
         }
 
-        public void DeleteEmployee(Employee employee)
+        public void DeleteEmployee(MyEmployee employee)
         {
             employees.Remove(employee);
         }
 
-        public List<Employee> GetEmployee()
+        public List<MyEmployee> GetEmployee()
         {
             return employees;
         }
 
-        public Employee GetEmployee(Guid Id)
+        public MyEmployee GetEmployee(Guid Id)
         {
             return employees.SingleOrDefault(x => x.Id == Id);
         }
 
-        public Employee UpdateEmployee(Employee employee)
+        public MyEmployee UpdateEmployee(MyEmployee employee)
         {
             var existingEmployee = GetEmployee(employee.Id);
             existingEmployee.Name = employee.Name;

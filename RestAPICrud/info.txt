@@ -3,3 +3,10 @@ we need to add the following packages,
 
 1. Microsoft.EntityFrameworkCore.SqlServer
 2. Microsoft.EntityFrameworkCore.Tools  <-- This is basically used for code migration.
+
+Then Crete a class call EmployeeContext and inherit from DbContext
+
+After Creating necessary data and context class run the migration command in Package Manager console for migration.
+
+1. Add-Migration and give the name as Initial Migraition
+2. Update-Database to add the actual table in the DB

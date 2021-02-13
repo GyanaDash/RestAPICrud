@@ -11,10 +11,10 @@ namespace RestAPICrud.Controllers
 {
     
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class MyEmployeeController : ControllerBase
     {
-        private IEmployeeData _employeeData;
-        public EmployeeController(IEmployeeData employeeData)
+        private IMyEmployeeData _employeeData;
+        public MyEmployeeController(IMyEmployeeData employeeData)
         {
             _employeeData = employeeData;
         }
@@ -43,7 +43,7 @@ namespace RestAPICrud.Controllers
 
         [HttpPost]
         [Route("api/[controller]")]
-        public IActionResult AddNewEmployee(Employee employee)
+        public IActionResult AddNewEmployee(MyEmployee employee)
         {
             _employeeData.AddEmployee(employee);
             return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + employee.Id, employee);
@@ -66,9 +66,9 @@ namespace RestAPICrud.Controllers
 
         [HttpPut]
         [Route("api/[controller]/{id}")]
-        public IActionResult EditEmployee(Guid id, Employee employee)
+        public IActionResult EditEmployee(Guid Id, MyEmployee employee)
         {
-            var employeeExisted = _employeeData.GetEmployee(id);
+            var employeeExisted = _employeeData.GetEmployee(Id);
 
             if (employeeExisted != null)
             {
